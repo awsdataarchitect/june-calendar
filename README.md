@@ -81,10 +81,6 @@ In the future, I'd like to:
    - Edit the HTML, CSS, and JavaScript files as needed
    - Refresh your browser to see the changes
 
-### Important: Amplify Deployment Notes
-
-⚠️ **Known Issue with Amplify CLI**: The `amplify publish` command is creating abnormally large zip files (20+ GB) for this simple static site. This is NOT normal behavior and indicates a potential bug in the Amplify CLI when handling static sites without a proper build process.
-
 **Recommended Solutions:**
 
 1. **Use Amplify Console Instead (Recommended)**:
