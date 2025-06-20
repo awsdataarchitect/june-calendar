@@ -70,7 +70,7 @@ In the future, I'd like to:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/awsdataarcitect/june-calendar.git
+   git clone https://github.com/awsdataarchitect/june-calendar.git
    cd june-calendar
    ```
 
