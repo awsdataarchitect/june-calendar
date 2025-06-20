@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore significant events and celebrations for each day in June with our interactive calendar">
+    <title>June Calendar - Celebrating Significant Days</title>
+    
+    <!-- Resource Hints -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Preconnect to font sources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Font Loading Optimization -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;500;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="js/events-data.js" as="script">
+    
+    <!-- Critical CSS Inline -->
+    <style>
+        /* Critical CSS will be inlined here */
+        :root {
+            --summer-blue: #0066CC; /* Darkened for better contrast */
+            --sunshine-yellow: #FFD700;
+            --leaf-green: #2E8B57; /* Darkened for better contrast */
+            --soft-coral: #E05D5D; /* Adjusted for better contrast */
+            --lavender: #8A4FBD; /* Adjusted for better contrast */
+            --aqua: #00A3CC; /* Darkened for better contrast */
+            --off-white: #F8F9FA;
+            --light-gray: #E9ECEF;
+            --medium-gray: #6C757D; /* Darkened for better contrast */
+            --dark-gray: #212529; /* Darkened for better contrast */
+            --cultural-color: #D84315; /* Darkened for better contrast */
+            --historical-color: #0277BD; /* Darkened for better contrast */
+            --awareness-color: #2E7D32; /* Darkened for better contrast */
+            --natural-color: #7B1FA2; /* Adjusted for better contrast */
+            --other-color: #F57F17; /* Adjusted for better contrast */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-accent: 'Caveat', cursive;
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 2rem;
+            --space-xl: 4rem;
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 16px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --z-background: -1;
+            --z-default: 1;
+            --z-above: 10;
+            --z-modal: 100;
+            --z-overlay: 1000;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: var(--z-overlay);
+            transition: background-color var(--transition-medium);
+        }
+        
+        .hero-section {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--summer-blue);
+        }
+    </style>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/calendar-enhancements.css">
+    <link rel="stylesheet" href="css/animations.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#calendar" class="skip-link">Skip to calendar</a>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="#hero">June Calendar</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#calendar">Calendar</a></li>
+                    <li><a href="#featured">Featured Days</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <!-- Hero Background -->
+        <div class="hero-bg" style="background-color: var(--summer-blue);"></div>
+        
+        <!-- Hero Background Elements -->
+        <div class="hero-element hero-element-1"></div>
+        <div class="hero-element hero-element-2"></div>
+        <div class="hero-element hero-element-3"></div>
+        <div class="hero-element hero-element-4"></div>
+        
+        <!-- Decorative Elements -->
+        <div class="hero-decoration hero-decoration-1"></div>
+        <div class="hero-decoration hero-decoration-2"></div>
+        <div class="hero-decoration hero-decoration-3"></div>
+        
+        <!-- Calendar Icon -->
+        <div class="hero-calendar-icon">
+            <div class="hero-calendar-icon-month">JUN</div>
+            <div class="hero-calendar-icon-day">2025</div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animated-heading">June Calendar</h1>
+                <h2 class="animated-subheading">Discover the Significant Days of June</h2>
+                <p class="hero-description lead">Explore cultural celebrations, historical moments, and awareness days throughout the month of June with our interactive calendar.</p>
+                <a href="#calendar" class="btn btn-large">Explore the Calendar</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="calendar-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>June 2025 Calendar</h2>
+                <p class="lead">Click on any day to discover its significance and learn about important events</p>
+            </div>
+            
+            <!-- Category Filters -->
+            <div class="category-filters" role="group" aria-label="Event category filters">
+                <button class="category-filter all active" data-category="all">
+                    <span class="category-filter-icon"></span>
+                    <span>All Events</span>
+                </button>
+                <button class="category-filter cultural" data-category="cultural">
+                    <span class="category-filter-icon"></span>
+                    <span>Cultural Celebrations</span>
+                </button>
+                <button class="category-filter historical" data-category="historical">
+                    <span class="category-filter-icon"></span>
+                    <span>Historical Events</span>
+                </button>
+                <button class="category-filter awareness" data-category="awareness">
+                    <span class="category-filter-icon"></span>
+                    <span>Awareness Days</span>
+                </button>
+                <button class="category-filter natural" data-category="natural">
+                    <span class="category-filter-icon"></span>
+                    <span>Natural Phenomena</span>
+                </button>
+                <button class="category-filter other" data-category="other">
+                    <span class="category-filter-icon"></span>
+                    <span>Other Celebrations</span>
+                </button>
+            </div>
+            
+            <!-- Calendar Container -->
+            <div class="calendar-container" role="region" aria-label="June 2025 Calendar">
+                <div class="calendar-header">
+                    <h3 class="calendar-title">June 2025</h3>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn prev" aria-label="Previous month">←</button>
+                        <button class="calendar-nav-btn next" aria-label="Next month">→</button>
+                    </div>
+                </div>
+                
+                <div class="calendar-weekdays" role="row">
+                    <div class="weekday">Sun</div>
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                </div>
+                
+                <div class="calendar-grid" role="grid" aria-label="June 2025 Calendar Grid">
+                    <!-- Calendar days will be populated with JavaScript -->
+                </div>
+            </div>
+            
+            <!-- Day Detail Panel -->
+            <div class="day-detail-panel" id="dayDetailPanel" role="dialog" aria-labelledby="dayDetailDate" aria-hidden="true">
+                <div class="day-detail-header">
+                    <h3 class="day-detail-date" id="dayDetailDate">June 1, 2025</h3>
+                    <button class="day-detail-close" aria-label="Close panel">×</button>
+                </div>
+                <div class="day-detail-content">
+                    <div class="event-list">
+                        <!-- Event details will be populated with JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Days Section -->
+    <section id="featured" class="featured-days">
+        <div class="container">
+            <h2 class="featured-days-title">Featured Days in June</h2>
+            
+            <div class="featured-carousel" role="region" aria-label="Featured days in June carousel">
+                <!-- Featured days will be populated with JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About This Calendar</h2>
+                <p class="lead">Learn about the purpose and creation of our June Calendar</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Celebrating the Diversity of June</h3>
+                    <p>June is a month filled with significant cultural celebrations, historical commemorations, and awareness campaigns. Our interactive calendar aims to highlight these important days and provide educational content about their significance.</p>
+                    
+                    <h3>Educational Purpose</h3>
+                    <p>This calendar was created to educate visitors about the diverse range of events that take place throughout June. Each day features detailed information about its significance, helping to promote cultural understanding and awareness.</p>
+                    
+                    <div class="accent-text">
+                        "Understanding the significance of each day helps us appreciate the rich cultural tapestry that makes up our global community."
+                    </div>
+                    
+                    <h3>Inclusive Approach</h3>
+                    <p>We've made an effort to include a wide variety of events from different cultures, historical contexts, and causes. Our goal is to represent the rich tapestry of celebrations and commemorations that make June special around the world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>June Calendar</h3>
+                    <p>Celebrating Significant Days</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#hero">Home</a></li>
+                            <li><a href="#calendar">Calendar</a></li>
+                            <li><a href="#featured">Featured Days</a></li>
+                            <li><a href="#about">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-attribution">
+                    <p>Created for the Frontend Challenge: June Celebrations</p>
+                    <p class="small">&copy; 2025 | All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/events-data.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Deferred JavaScript Files -->
+    <script src="js/image-loader.js" defer></script>
+    <script src="js/calendar.js" defer></script>
+    <script src="js/accessibility.js" defer></script>
+    <script src="js/filter-enhancements.js" defer></script>
+    <script src="js/featured-days.js" defer></script>
+</body>
+</html>

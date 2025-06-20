@@ -1,0 +1,23 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - echo "Starting build process..."
+    build:
+      commands:
+        - echo "No build required for static site"
+        - echo "Using root directory as source"
+  artifacts:
+    baseDirectory: .
+    files:
+      - '**/*'
+    excludePaths:
+      - amplify/**/*
+      - .git/**/*
+      - .kiro/**/*
+      - .vscode/**/*
+      - src/**/*
+      - '*.zip'
+  cache:
+    paths: []

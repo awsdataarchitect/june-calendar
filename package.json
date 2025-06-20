@@ -1,0 +1,10 @@
+{
+  "name": "june-calendar",
+  "version": "1.0.0",
+  "description": "Interactive June Calendar for Frontend Challenge",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  },
+  "author": "",
+  "license": "MIT"
+}

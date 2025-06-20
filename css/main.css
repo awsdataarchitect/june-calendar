@@ -1,0 +1,954 @@
+/* Main CSS for June Calendar Landing Page */
+
+/* Custom Properties */
+:root {
+  /* Primary Colors */
+  --summer-blue: #1A85FF;
+  --sunshine-yellow: #FFD700;
+  --leaf-green: #4CAF50;
+  
+  /* Secondary Colors */
+  --soft-coral: #FF6B6B;
+  --lavender: #9D65C9;
+  --aqua: #00D4FF;
+  
+  /* Neutral Colors */
+  --off-white: #F8F9FA;
+  --light-gray: #E9ECEF;
+  --medium-gray: #CED4DA;
+  --dark-gray: #343A40;
+  
+  /* Category Colors */
+  --cultural-color: #FF5722;
+  --historical-color: #2196F3;
+  --awareness-color: #4CAF50;
+  --natural-color: #9C27B0;
+  --other-color: #FFC107;
+  
+  /* Typography */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Open Sans', sans-serif;
+  --font-accent: 'Caveat', cursive;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Z-index layers */
+  --z-background: -10;
+  --z-default: 1;
+  --z-above: 10;
+  --z-modal: 100;
+  --z-overlay: 1000;
+  
+  /* Responsive Breakpoints */
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --large-desktop: 1440px;
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-gray);
+  background-color: var(--off-white);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--summer-blue);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover, a:focus {
+  color: var(--aqua);
+  text-decoration: underline;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-top: 0;
+  line-height: 1.2;
+  color: var(--dark-gray);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: var(--space-lg);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--space-md);
+}
+
+h4 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+/* Layout Framework */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Grid System */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-2 {
+  grid-template-columns: 1fr;
+}
+
+.grid-3 {
+  grid-template-columns: 1fr;
+}
+
+.grid-4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Flexbox Utilities */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+/* Sections */
+section {
+  padding: var(--space-xl) 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Navigation */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
+  z-index: var(--z-modal);
+  transition: background-color var(--transition-medium);
+}
+
+.main-nav.scrolled {
+  background-color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo a {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--summer-blue);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: var(--space-md);
+}
+
+.nav-links a {
+  color: var(--dark-gray);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--summer-blue);
+  transition: width var(--transition-medium);
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--summer-blue);
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+  width: 100%;
+}
+
+.mobile-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-menu-toggle span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--dark-gray);
+  transition: all var(--transition-fast);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+  
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: white;
+  overflow: hidden;
+  transition: height var(--transition-medium);
+  z-index: var(--z-modal);
+}
+
+.mobile-menu.active {
+  height: calc(100vh - 70px);
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: var(--space-md);
+  color: var(--dark-gray);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--sunshine-yellow);
+  color: var(--dark-gray);
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: var(--y-pos, 50%);
+  left: var(--x-pos, 50%);
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.btn:hover, .btn:focus {
+  background-color: white;
+  color: var(--summer-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.btn:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+.btn-large {
+  padding: var(--space-md) var(--space-lg);
+  font-size: 1.1rem;
+}
+
+/* About Section */
+.about-section {
+  background-color: white;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Footer */
+.main-footer {
+  background-color: var(--dark-gray);
+  color: white;
+  padding: var(--space-xl) 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.footer-logo h3 {
+  color: white;
+  margin-bottom: var(--space-xs);
+}
+
+.footer-logo p {
+  margin-bottom: 0;
+  opacity: 0.8;
+}
+
+.footer-nav h4 {
+  color: white;
+  margin-bottom: var(--space-md);
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  margin-bottom: var(--space-sm);
+}
+
+.footer-nav a {
+  color: var(--light-gray);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-attribution {
+  text-align: center;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: 2fr 3fr;
+  }
+  
+  .footer-attribution {
+    grid-column: span 2;
+  }
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accent Text */
+.accent-text {
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--summer-blue);
+  font-style: italic;
+  margin: var(--space-lg) 0;
+  padding: var(--space-md);
+  border-left: 3px solid var(--summer-blue);
+  background-color: rgba(26, 133, 255, 0.05);
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+
+.mt-md {
+  margin-top: var(--space-md);
+}
+
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+
+.p-sm {
+  padding: var(--space-sm);
+}
+
+.p-md {
+  padding: var(--space-md);
+}
+
+.p-lg {
+  padding: var(--space-lg);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Helpers */
+.hide-on-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-on-mobile {
+    display: block;
+  }
+  
+  .hide-on-desktop {
+    display: none;
+  }
+}
+/* Image Optimization Styles */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background-color: var(--light-gray);
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+/* Background image loading styles */
+[data-bg] {
+  background-color: var(--light-gray);
+  background-image: none;
+  transition: background-image 0.3s ease;
+}
+
+[data-bg].bg-loaded {
+  background-color: transparent;
+}
+
+/* Image loading placeholder animation */
+@keyframes imagePlaceholderPulse {
+  0% {
+    background-color: var(--light-gray);
+  }
+  50% {
+    background-color: var(--medium-gray);
+  }
+  100% {
+    background-color: var(--light-gray);
+  }
+}
+
+.lazy-image:not(.loaded) {
+  animation: imagePlaceholderPulse 1.5s infinite;
+}
+
+/* Responsive image container */
+.responsive-img-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.responsive-img-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Accessibility Styles */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles */
+:focus {
+  outline: 2px solid var(--summer-blue);
+  outline-offset: 2px;
+}
+
+/* Focus styles for dark backgrounds */
+.hero-section :focus,
+.day-detail-header :focus,
+.calendar-header :focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--summer-blue);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .calendar-day.selected {
+    outline: 3px solid CanvasText;
+  }
+  
+  .category-filter.active {
+    border: 2px solid CanvasText;
+  }
+  
+  .event-indicator {
+    border: 1px solid CanvasText;
+  }
+}
+/* Enhanced Readability Styles */
+body {
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--dark-gray);
+}
+
+/* Improved text spacing */
+p, li {
+  margin-bottom: 1em;
+  max-width: 70ch; /* Optimal line length for readability */
+}
+
+/* Improved heading contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--dark-gray);
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Improved link styles */
+a {
+  color: var(--summer-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--aqua);
+  text-decoration: underline;
+}
+
+/* Improved button contrast */
+.btn {
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn-large {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+}
+
+/* Improved form element contrast */
+input, select, textarea {
+  border: 2px solid var(--medium-gray);
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--summer-blue);
+  outline: 2px solid var(--summer-blue);
+  outline-offset: 2px;
+}
+
+/* Improved calendar day contrast */
+.calendar-day {
+  border: 1px solid var(--light-gray);
+}
+
+.calendar-day:hover {
+  border-color: var(--summer-blue);
+}
+
+.calendar-day.selected {
+  border: 2px solid var(--summer-blue);
+}
+
+/* Improved event indicator contrast */
+.event-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Improved focus styles */
+:focus-visible {
+  outline: 3px solid var(--summer-blue);
+  outline-offset: 3px;
+}
+
+/* Improved text contrast in cards */
+.featured-day-title {
+  color: var(--dark-gray);
+  font-weight: 700;
+}
+
+.featured-day-description {
+  color: var(--dark-gray);
+}
+
+/* Improved contrast for day numbers */
+.day-number {
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+
+/* Improved contrast for today indicator */
+.today .day-number {
+  background-color: var(--summer-blue);
+  color: white;
+  font-weight: 700;
+}
+
+/* Improved contrast for event previews */
+.event-preview {
+  color: var(--dark-gray);
+  font-weight: 500;
+}
+
+/* Improved contrast for navigation */
+.main-nav {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links a {
+  color: var(--dark-gray);
+  font-weight: 600;
+}
+
+/* Improved contrast for buttons */
+button, .btn {
+  font-weight: 600;
+}
+
+/* Improved contrast for category filters */
+.category-filter {
+  font-weight: 600;
+  border-width: 2px;
+}
+
+/* Improved contrast for carousel navigation */
+.carousel-nav {
+  background-color: var(--summer-blue);
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Improved contrast for pagination indicators */
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+}
+
+.carousel-indicator.active {
+  background-color: var(--summer-blue);
+}
+
+/* Improved contrast for section headers */
+.section-header h2 {
+  font-size: 2rem;
+  color: var(--dark-gray);
+}
+
+/* Improved contrast for lead text */
+.lead {
+  font-size: 1.2rem;
+  color: var(--dark-gray);
+  line-height: 1.6;
+}
+
+/* Improved contrast for footer */
+.main-footer {
+  background-color: var(--dark-gray);
+  color: white;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Improved contrast for search input */
+.search-input {
+  border: 2px solid var(--medium-gray);
+}
+
+.search-input:focus {
+  border-color: var(--summer-blue);
+}
+
+/* Improved contrast for day detail panel */
+.day-detail-header {
+  background-color: var(--summer-blue);
+}
+
+.day-detail-date {
+  font-weight: 700;
+}
+
+/* Improved contrast for event cards */
+.event-card-title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.event-card-description {
+  line-height: 1.6;
+}
