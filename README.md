@@ -84,7 +84,7 @@ In the future, I'd like to:
 **Recommended Solutions:**
 
 1. **Use Amplify Console Instead (Recommended)**:
-   - The web-based Amplify Console (Option 4) doesn't have this issue
+   - The web-based Amplify Console (Option 4) doesn't have zip file packaging issue (although its resolved in latest build)
    - It handles static site deployment efficiently without large local artifacts
 
 2. **Use an Alternative Deployment Method**:
